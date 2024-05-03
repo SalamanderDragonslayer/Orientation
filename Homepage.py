@@ -1,4 +1,4 @@
-import base64
+# import base64
 from typing import Union
 import av
 from streamlit_webrtc import VideoProcessorBase, webrtc_streamer, ClientSettings
@@ -18,24 +18,24 @@ import nltk
 from nltk.tokenize import word_tokenize
 # Function to get base64 encoding of an image file
 nltk.download('punkt')
-def get_base64(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-
-# Function to set background image
-def set_background(png_file):
-    bin_str = get_base64(png_file)
-    page_bg_img = f'''
-        <style>
-            body {{
-                background-image: url("data:image/png;base64,{bin_str}");
-                background-size: cover;
-            }}
-        </style>
-    '''
-    st.markdown(page_bg_img, unsafe_allow_html=True)
+# def get_base64(bin_file):
+#     with open(bin_file, 'rb') as f:
+#         data = f.read()
+#     return base64.b64encode(data).decode()
+#
+#
+# # Function to set background image
+# def set_background(png_file):
+#     bin_str = get_base64(png_file)
+#     page_bg_img = f'''
+#         <style>
+#             body {{
+#                 background-image: url("data:image/png;base64,{bin_str}");
+#                 background-size: cover;
+#             }}
+#         </style>
+#     '''
+#     st.markdown(page_bg_img, unsafe_allow_html=True)
 
 def show_numerology_page():
     st.header("Thần số học")

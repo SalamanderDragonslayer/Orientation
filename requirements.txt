@@ -7,5 +7,5 @@ numpy
 pandas
 altair
 streamlit-webrtc
-base64
-
+nltk
+unidecode
