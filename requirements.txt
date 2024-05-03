@@ -7,6 +7,9 @@ numpy
 pandas
 altair
 streamlit-webrtc
+efficientnet
+matplotlib
+tensorflow
+efficientnet-pytorch
 nltk
 unidecode
-av
