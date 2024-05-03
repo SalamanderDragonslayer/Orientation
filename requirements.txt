@@ -9,3 +9,4 @@ altair
 streamlit-webrtc
 nltk
 unidecode
+av
