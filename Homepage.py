@@ -1,6 +1,22 @@
-import streamlit as st
 import base64
-
+from typing import Union
+import av
+from streamlit_webrtc import VideoProcessorBase, webrtc_streamer, ClientSettings
+import threading
+import torchvision
+from collections import Counter
+import os
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+import torch
+import torch.nn as nn
+import torchvision.transforms as transforms
+import streamlit as st
+from PIL import Image
+from unidecode import unidecode
+import nltk
+from nltk.tokenize import word_tokenize
 
 # Function to get base64 encoding of an image file
 def get_base64(bin_file):
@@ -22,17 +38,12 @@ def set_background(png_file):
     '''
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
-
-# Function for numerology page
 def show_numerology_page():
     st.header("Thần số học")
     st.write(
         "Thần số học là nghệ thuật dựa trên việc phân tích các số liên quan đến ngày, tháng và năm sinh của bạn để hiểu về vận mệnh và tính cách.")
     # You can embed your numerology app here
-    from unidecode import unidecode
-    import streamlit as st
-    import nltk
-    from nltk.tokenize import word_tokenize
+
     sochudao = {
         2: ["Nghệ thuật và Sáng tạo", "Truyền thông và Quảng cáo", "Tâm lý và Tư vấn tâm lý", "Giáo dục và Đào tạo"],
         3: ["Nghiên cứu và Phát triển", "Tài chính và Đầu tư", "Doanh nhân và Khởi nghiệp", "Luật sư và Luật phá",
@@ -273,17 +284,7 @@ def show_palmistry_page():
     st.write(
         "Sinh trắc học vân tay là nghiên cứu về các đặc điểm vân tay để xác định tính cách và tương lai của một người.")
     # You can add content related to palmistry here
-    # Loại bỏ import và tạo model từ TensorFlow và EfficientNet
-    import os
-    import cv2
-    import numpy as np
-    import matplotlib.pyplot as plt
-    import torch
-    import torch.nn as nn
-    import torchvision.transforms as transforms
-    # from efficientnet_pytorch import EfficientNet
-    import streamlit as st
-    from PIL import Image
+
     classes = ['Hình cung', 'Vòng tròn hướng tâm', 'Vòng lặp Ulnar', 'Vòm lều', 'Vòng xoáy']
 
     class FingerprintCNN(nn.Module):
@@ -398,22 +399,7 @@ def show_physiognomy_page():
     st.write(
         "Nhân tướng học là việc đọc về tính cách và vận mệnh từ các đặc điểm về khuôn mặt, đặc biệt là khuôn mặt và dáng vẻ của mắt, mũi và miệng.")
     # You can add content related to physiognomy here
-    import streamlit as st
-    from typing import Union
-    import cv2
-    import av
-    import os
-    from streamlit_webrtc import VideoProcessorBase, webrtc_streamer, ClientSettings
-    import threading
-    from PIL import Image
-    import torch
-    import torch.nn as nn
-    import torchvision
-    from torchvision import transforms
-    from PIL import Image
-    from collections import Counter
-    import numpy as np
-    import time
+
     # Load lại mô hình đã được huấn luyện
     model_path = r"D:\Duy\EXE\Orientation\Pages\face_shape_classifier.pth"
     train_dataset = {0: 'Heart', 1: 'Oblong', 2: 'Oval', 3: 'Round', 4: 'Square'}
@@ -659,12 +645,12 @@ def show_physiognomy_page():
 
 # Main function
 def main():
-    set_background('background.jpg')
-
-    st.set_page_config(
-        page_title="Direction-Pathway",
-        page_icon=":))"
-    )
+    # set_background('background.jpg')
+    #
+    # st.set_page_config(
+    #     page_title="Direction-Pathway",
+    #     page_icon=":))"
+    # )
 
     st.title("Chào mừng đến với Direction-Pathway")
     st.write(
