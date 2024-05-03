@@ -16,7 +16,6 @@ from PIL import Image
 from unidecode import unidecode
 import nltk
 from nltk.tokenize import word_tokenize
-
 # Function to get base64 encoding of an image file
 def get_base64(bin_file):
     with open(bin_file, 'rb') as f:
