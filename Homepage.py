@@ -8,7 +8,6 @@ from collections import Counter
 import os
 import cv2
 import numpy as np
-# import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
@@ -643,6 +642,24 @@ def show_physiognomy_page():
     if __name__ == "__main__":
         main()
 
+def homepage():
+    st.title("Chào mừng đến với Direction-Pathway")
+    st.write(
+        "Chúng ta hãy khám phá những khía cạnh thú vị về vận mệnh và tính cách của bạn thông qua thần số học, sinh trắc học và nhân tướng học")
+    st.title("Chào mừng đến với Trang chủ Thần số học, Sinh trắc học vân tay và Nhân tướng học")
+    st.write("Chúng ta hãy khám phá những khía cạnh thú vị về vận mệnh, tính cách và vân tay của bạn!")
+
+    st.header("Thần số học")
+    st.write(
+        "Thần số học là nghệ thuật dựa trên việc phân tích các số liên quan đến ngày, tháng và năm sinh của bạn để hiểu về vận mệnh và tính cách.")
+
+    st.header("Sinh trắc học vân tay")
+    st.write(
+        "Sinh trắc học vân tay là nghiên cứu về các đặc điểm vân tay để xác định tính cách và tương lai của một người.")
+
+    st.header("Nhân tướng học")
+    st.write(
+        "Nhân tướng học là việc đọc về tính cách và vận mệnh từ các đặc điểm về khuôn mặt, đặc biệt là khuôn mặt và dáng vẻ của mắt, mũi và miệng.")
 # Main function
 def main():
     # set_background('background.jpg')
@@ -651,13 +668,8 @@ def main():
     #     page_title="Direction-Pathway",
     #     page_icon=":))"
     # )
-
-    st.title("Chào mừng đến với Direction-Pathway")
-    st.write(
-        "Chúng ta hãy khám phá những khía cạnh thú vị về vận mệnh và tính cách của bạn thông qua thần số học, sinh trắc học và nhân tướng học")
-
     # Sidebar navigation
-    page_options = ["Thần số học", "Sinh trắc học vân tay", "Nhân tướng học"]
+    page_options = ["Trang chủ","Thần số học", "Sinh trắc học vân tay", "Nhân tướng học"]
     selected_page = st.sidebar.radio("Chọn trang", page_options)
 
     # Display selected page
@@ -667,6 +679,9 @@ def main():
         show_palmistry_page()
     elif selected_page == "Nhân tướng học":
         show_physiognomy_page()
+    elif selected_page == "Trang chủ":
+        homepage()
+
 
 
 if __name__ == "__main__":
