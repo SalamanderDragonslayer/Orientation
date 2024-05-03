@@ -310,7 +310,7 @@ def show_palmistry_page():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     # model = torch.load(r'D:\Final1\boi\Finger_print\fingerprint.pth', map_location=device)
     model = FingerprintCNN()
-    model.load_state_dict(torch.load(r'D:\Duy\EXE\Orientation\Pages\fingerprint.pth', map_location=device))
+    model.load_state_dict(torch.load(r'D:\Duy\EXE\Orientation\fingerprint.pth', map_location=device))
     model.eval()
 
     # Define class labels and corresponding information
@@ -394,7 +394,7 @@ def show_physiognomy_page():
     # You can add content related to physiognomy here
 
     # Load lại mô hình đã được huấn luyện
-    model_path = r"D:\Duy\EXE\Orientation\Pages\face_shape_classifier.pth"
+    model_path = r"D:\Duy\EXE\Orientation\face_shape_classifier.pth"
     train_dataset = {0: 'Heart', 1: 'Oblong', 2: 'Oval', 3: 'Round', 4: 'Square'}
 
     class MyNormalize(object):
