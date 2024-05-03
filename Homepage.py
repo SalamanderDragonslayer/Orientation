@@ -217,8 +217,6 @@ def show_numerology_page():
         return f"{formatted_day}/{formatted_month}/{formatted_year}"
 
     def main():
-        st.title("Ứng dụng Tính Thần Số Học")
-
         # Hàng nhập ngày tháng năm
         col_ngay, col_thang, col_nam = st.columns(3)
         with col_ngay:
@@ -366,10 +364,7 @@ def show_palmistry_page():
         predicted_class = classes[predicted.item()]
         return predicted_class
 
-    # Streamlit App
-    st.title('Ứng Dụng Sinh Trắc Học Vân Tay')
-
-    uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+    uploaded_file = st.file_uploader("Nhập ảnh vân tay của bạn", type=["jpg", "jpeg", "png"])
 
     if uploaded_file is not None:
         # Display the uploaded image
@@ -542,10 +537,8 @@ def show_physiognomy_page():
     }
 
     def main():
-        st.title("Face Shape Prediction")
-
         # Lựa chọn giữa webcam và tải ảnh
-        option = st.radio("Choose prediction method:", ("Webcam", "Image"))
+        option = st.radio("Chọn cách thức:", ("Webcam", "Image"))
 
         if option == "Webcam":
 
@@ -583,19 +576,6 @@ def show_physiognomy_page():
                             if len(self.img_list) <= 10:
                                 self.img_list.append(face)
                     return av.VideoFrame.from_ndarray(in_image, format="bgr24")
-
-            # -------------Header Section------------------------------------------------
-
-            title = '<p style="text-align: center;font-size: 40px;font-weight: 550; "> Nhân Tướng Học Khuôn Mặt</p>'
-            st.markdown(title, unsafe_allow_html=True)
-
-            st.markdown(
-                "Luư Ý Khi sử dụng:"
-                "Bạn hãy mở camera và để app xác định khuôn mặt của bạn. Khi phát hiện ra nó sẽ khoanh vùng khuôn mặt "
-                "Khi khung xuất hiện hãy đợi 1 tí (khoảng 3s xuất hiện khung) rồi nhấn nút predict phía dưới. Bạn hãy đảm bảo "
-                "dùng webcam tại nơi có nhiều ánh sáng và tháo những phụ kiện trên mặt nếu app không hiện khung!")
-
-            # -------------Sidebar Section------------------------------------------------
 
             ctx = webrtc_streamer(key="snapshot", client_settings=WEBRTC_CLIENT_SETTINGS,
                                   video_processor_factory=VideoTransformer)
