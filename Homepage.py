@@ -295,7 +295,7 @@ def show_palmistry_page():
             self.pool = nn.MaxPool2d(2, 2)
             self.fc1 = nn.Linear(128 * 4 * 4, 128)
             self.fc2 = nn.Linear(128, len(classes))
-
+    
         def forward(self, x):
             x = self.pool(nn.functional.relu(self.conv1(x)))
             x = self.pool(nn.functional.relu(self.conv2(x)))
@@ -306,15 +306,17 @@ def show_palmistry_page():
             x = nn.functional.relu(self.fc1(x))
             x = self.fc2(x)
             return x
-
     # Load the trained model
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    model = FingerprintCNN()
-    model.load_state_dict(torch.load(r'fingerprint.pth', map_location=device))
-    model.eval()
-
+    
+    model_fin = FingerprintCNN()
+    model_fin.load_state_dict(torch.load(r'fingerprint.pth', map_location=device))
+    model_fin.eval()
+    
+    
+    
     # Define class labels and corresponding information
-
+    
     class_info = {
         'Vòng xoáy': {
             'description': 'Những người có dấu vân tay vòng xoáy cực kỳ độc lập và có đặc điểm tính cách nổi trội. Vòng xoáy thường biểu thị mức độ thông minh cao và tính cách có ý chí mạnh mẽ. Những đặc điểm tiêu cực- Bản chất thống trị của họ đôi khi có thể dẫn đến chủ nghĩa hoàn hảo và thiếu sự đồng cảm với người khác.',
@@ -337,23 +339,17 @@ def show_palmistry_page():
             'careers': ['Nghiên cứu và Phát triển', 'Nghệ thuật và Văn hóa', 'Nghệ thuật và Sáng tạo']
         }
     }
-
-    # Function to preprocess image for prediction
-
-    # Function to preprocess image for prediction
-    def preprocess_image(image_path):
-        img = cv2.imread(image_path)
-        img = cv2.resize(img, (128, 128))
-        img = img / 255.0  # Normalize
-        return img.reshape(-1, 128, 128, 3)
-
+    
+    
+  
+    
+    
     # Function to predict label for input image
     def predict_label(img):
         # img = cv2.imread(image_path)
         img = np.array(img)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert to RGB
         img = cv2.resize(img, (128, 128))  # Resize the image to 128x128
-
         img.reshape(-1, 128, 128, 3)
         transform = transforms.Compose([
             transforms.ToTensor(),
@@ -361,7 +357,7 @@ def show_palmistry_page():
         img = transform(img)
         img = img.unsqueeze(0)  # Add batch dimension
         with torch.no_grad():
-            outputs = model(img)
+            outputs = model_fin(img)
             _, predicted = torch.max(outputs, 1)
         predicted_class = classes[predicted.item()]
         return predicted_class
