@@ -352,6 +352,9 @@ def show_palmistry_page():
         # img = cv2.imread(image_path)
         img = np.array(img)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert to RGB
+        img = cv2.resize(img, (128, 128))  # Resize the image to 128x128
+
+        img.reshape(-1, 128, 128, 3)
         transform = transforms.Compose([
             transforms.ToTensor(),
         ])
